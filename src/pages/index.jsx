@@ -1,5 +1,5 @@
 import Home from './Home';
 import ProductDetail from './ProductDetail';
-import Cart from '../componets/Cart';
+import Cart from './Cart';
 
 export { Home, ProductDetail, Cart };

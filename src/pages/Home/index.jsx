@@ -1,7 +1,8 @@
 import React,{useEffect} from 'react';
-import { Header, Content, Footer } from '../../componets';
+import { Header, Content, Footer, ProductCard } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts} from '../../store/productSlice';
+import { Col, Row } from 'antd';
 
 
 const Home = () => {
@@ -25,12 +26,13 @@ const Home = () => {
     <div>
       <Header />
       <div>
+      <Row gutter={[12, 10]}>
         {products.map((product) => (
-          <div key={product?.id}>
-            <h2>{product?.title}</h2>
-            <p>{product?.description}</p>
-          </div>
+          <Col xs={24} sm={12} lg={8} xl={6} key={product?.id}>
+            <ProductCard product={product} />
+        </Col>
         ))}
+          </Row>
       </div>
       <Content />
       <Footer />
