@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Header, MainContent, Footer, ProductCard } from '../../components';
+import { AppHeader, MainContent, Footer, ProductCard } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../store/productSlice';
 import { Col, Row } from 'antd';
@@ -23,7 +23,7 @@ const Home = () => {
   }
   return (
     <div>
-      <Header />
+      <AppHeader />
       <div>
         <MainContent>
           <Row gutter={[12, 10]}>
