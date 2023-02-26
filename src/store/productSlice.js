@@ -2,14 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 const apiUrl = import.meta.env.VITE_BASE_URL;
 
-export const fetchProducts = createAsyncThunk(
-  'products/fetchProducts',
-  async () => {
-    const response = await axios.get(apiUrl);
-    return response.data;
-  }
-);
-
 const productSlice = createSlice({
   name: 'products',
   initialState: {
@@ -33,5 +25,21 @@ const productSlice = createSlice({
       });
   },
 });
+
+export const fetchProducts = createAsyncThunk(
+  'products/fetchProducts',
+  async () => {
+    const response = await axios.get(apiUrl);
+    return response.data;
+  }
+);
+
+export const fetchProductById = createAsyncThunk(
+  `products/fetchProductById`,
+  async () => {
+    const response = await axios.get(`apiUrl/${id}`);
+    return response.data;
+  }
+);
 
 export default productSlice.reducer;
