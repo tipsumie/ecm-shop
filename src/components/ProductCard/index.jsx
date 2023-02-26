@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
       style={{ width: '100%' }}
     >
       <Row justify={'space-between'}>
-        <h3>{`$ ${product?.price}`}</h3>
+        <h3>{`Price $ ${product?.price}`}</h3>
         <AddToCartBtn />
       </Row>
     </Card>

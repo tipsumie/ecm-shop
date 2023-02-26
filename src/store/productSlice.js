@@ -28,8 +28,8 @@ const productSlice = createSlice({
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async () => {
-    const response = await axios.get(apiUrl);
+  async (limit) => {
+    const response = await axios.get(`${apiUrl}?limit=${limit}`);
     return response.data;
   }
 );
@@ -37,7 +37,7 @@ export const fetchProducts = createAsyncThunk(
 export const fetchProductById = createAsyncThunk(
   `products/fetchProductById`,
   async (id) => {
-    const response = await axios.get(`apiUrl/${id}`);
+    const response = await axios.get(`${apiUrl}/${id}`);
     return response.data;
   }
 );

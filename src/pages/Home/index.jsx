@@ -12,7 +12,7 @@ const Home = () => {
   const error = useSelector((state) => state.products.error);
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProducts(10));
   }, [dispatch]);
 
   if (status === 'loading') {
