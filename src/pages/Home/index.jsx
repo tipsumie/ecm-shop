@@ -1,9 +1,8 @@
-import React,{useEffect} from 'react';
-import { Header, Content, Footer, ProductCard } from '../../components';
+import React, { useEffect } from 'react';
+import { Header, MainContent, Footer, ProductCard } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts} from '../../store/productSlice';
+import { fetchProducts } from '../../store/productSlice';
 import { Col, Row } from 'antd';
-
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -26,15 +25,17 @@ const Home = () => {
     <div>
       <Header />
       <div>
-      <Row gutter={[12, 10]}>
-        {products.map((product) => (
-          <Col xs={24} sm={12} lg={8} xl={6} key={product?.id}>
-            <ProductCard product={product} />
-        </Col>
-        ))}
+        <MainContent>
+          <Row gutter={[12, 10]}>
+            {products.map((product) => (
+              <Col xs={24} sm={12} lg={8} xl={6} key={product?.id}>
+                <ProductCard product={product} />
+              </Col>
+            ))}
           </Row>
+        </MainContent>
       </div>
-      <Content />
+
       <Footer />
     </div>
   );
