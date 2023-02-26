@@ -1,13 +1,15 @@
 import { useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-
+import { Header, Content, Footer } from './componets';
 
 function App() {
-
   return (
-    <>
-      <div className='App'>Test</div>
-    </>
+    <BrowserRouter>
+      <Header />
+      <Content />
+      <Footer />
+    </BrowserRouter>
   );
 }
 
