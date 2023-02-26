@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { AppHeader, MainContent, Footer, ProductCard } from '../../components';
+import { AppHeader, MainContent, Footer, ProductCard, Loading } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../store/productSlice';
 import { Col, Row } from 'antd';
@@ -15,7 +15,7 @@ const Home = () => {
   }, [dispatch]);
 
   if (status === 'loading') {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (status === 'failed') {
