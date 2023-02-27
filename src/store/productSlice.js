@@ -7,6 +7,8 @@ const productSlice = createSlice({
   initialState: {
     products: [],
     status: 'idle',
+    productById: [],
+    productByIdStatus: 'idle',
     error: null,
   },
   reducers: {},
@@ -22,7 +24,18 @@ const productSlice = createSlice({
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
-      });
+      })
+      .addCase(fetchProductById.pending, (state) => {
+        state.productByIdStatus = 'loading';
+      })
+      .addCase(fetchProductById.fulfilled, (state, action) => {
+        state.productByIdStatus = 'succeeded';
+        state.productById = action.payload;
+      })
+      .addCase(fetchProductById.rejected, (state, action) => {
+        state.productByIdStatus = 'failed';
+        state.error = action.error.message;
+      })
   },
 });
 
