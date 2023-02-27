@@ -9,6 +9,7 @@ import {
 } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductById } from '../../store/productSlice';
+import { addToCart } from '../../store/cartSlice';
 import { useParams } from 'react-router-dom';
 import { Col, Image, Rate } from 'antd';
 import styled from 'styled-components';
@@ -34,7 +35,6 @@ const ProductDetail = () => {
     setQuantity((prevQty) => {
       let tempQty = prevQty + 1;
       if (tempQty > product?.count) tempQty = product?.count;
-      console.log(tempQty)
       return tempQty;
     });
   };
@@ -43,10 +43,14 @@ const ProductDetail = () => {
     setQuantity((prevQty) => {
       let tempQty = prevQty - 1;
       if (tempQty < 1) tempQty = 1;
-      console.log(tempQty)
       return tempQty;
     });
   };
+
+  const addToCartHandler = (product, quantity) => {
+    let totalPrice = quantity * product?.price;
+    dispatch(addToCart({...product, quantity: quantity, totalPrice}))
+  }
 
 
   if (productByIdStatus === 'loading') {
@@ -92,7 +96,7 @@ const ProductDetail = () => {
                 <AddToCartBtn
                   size='large'
                   style={CartButton}
-                  onClick={() => {}}
+                  onClick={() => {addToCartHandler(product, quantity)}}
                 >
                   ADD TO CART
                 </AddToCartBtn>

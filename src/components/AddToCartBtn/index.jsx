@@ -1,8 +1,8 @@
 import { Button } from 'antd';
 import styled from 'styled-components';
 
-const AddToCartBtn = () => {
-  return <AddToCart >Add to Cart</AddToCart>;
+const AddToCartBtn = ({onClick}) => {
+  return <AddToCart onClick={onClick}>Add to Cart</AddToCart>;
 };
 
 export default AddToCartBtn;
