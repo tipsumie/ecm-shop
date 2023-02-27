@@ -2,6 +2,7 @@ import React from 'react';
 import {  Badge, Row, Col, Layout } from 'antd';
 import { ShopOutlined , ShoppingCartOutlined } from '@ant-design/icons';
 import {  Link } from 'react-router-dom';
+import CartPopup from '../CartPopUp';
 
 const { Header } = Layout;
 
@@ -24,13 +25,13 @@ const AppHeader = () => {
           span={3}
           style={{display:'flex', justifyContent:'center'}}
         >
-          <Link to='/cart'>
+          <CartPopup>
             <Badge count={7}>
               <ShoppingCartOutlined
                 style={{ fontSize: 42, cursor: 'pointer' }}
               />
             </Badge>
-          </Link>
+          </CartPopup>
         </Col>
       </Row>
     </Header>

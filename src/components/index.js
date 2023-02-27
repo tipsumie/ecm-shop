@@ -4,5 +4,15 @@ import Footer from './Footer';
 import ProductCard from './ProductCard';
 import AddToCartBtn from './AddToCartBtn';
 import Loading from './Loading';
+import CartPopUp from './CartPopUp';
 
-export { AppHeader, MainContent, Footer, ProductCard, AddToCartBtn, Loading };
+export {
+  AppHeader,
+  MainContent,
+  Footer,
+  ProductCard,
+  AddToCartBtn,
+  Loading,
+  CartPopUp,
+};
+
