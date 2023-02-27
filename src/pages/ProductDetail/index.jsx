@@ -1,23 +1,52 @@
-import React, { useEffect } from 'react';
-import { AppHeader, MainContent, Footer, AddToCartBtn, Loading } from '../../components';
+import React, { useEffect, useState } from 'react';
+import {
+  AppHeader,
+  MainContent,
+  Footer,
+  AddToCartBtn,
+  Loading,
+  Quantity,
+} from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductById } from '../../store/productSlice';
 import { useParams } from 'react-router-dom';
-import { Row, Col, Image, Rate } from 'antd';
+import { Col, Image, Rate } from 'antd';
 import styled from 'styled-components';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products.productById);
-  const productByIdStatus = useSelector((state) => state.products.productByIdStatus);
-  const productByIdError = useSelector((state) => state.products.productByIdError);
-
+  const productByIdStatus = useSelector(
+    (state) => state.products.productByIdStatus
+  );
+  const productByIdError = useSelector(
+    (state) => state.products.productByIdError
+  );
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     dispatch(fetchProductById(id));
   }, [id]);
 
+
+  const increaseQty = () => {
+    setQuantity((prevQty) => {
+      let tempQty = prevQty + 1;
+      if (tempQty > product?.count) tempQty = product?.count;
+      console.log(tempQty)
+      return tempQty;
+    });
+  };
+
+  const decreaseQty = () => {
+    setQuantity((prevQty) => {
+      let tempQty = prevQty - 1;
+      if (tempQty < 1) tempQty = 1;
+      console.log(tempQty)
+      return tempQty;
+    });
+  };
 
 
   if (productByIdStatus === 'loading') {
@@ -33,33 +62,43 @@ const ProductDetail = () => {
       <AppHeader />
       <div>
         <MainContent>
-      <ProductDetailContainer>
-        <ImageContainer>
-          <MainImage>
-            <Image
-              src={product?.image}
-              alt={product?.image}
-              width={350}
-              preview={true}
-            />
-          </MainImage>
-        </ImageContainer>
+          <ProductDetailContainer>
+            <ImageContainer>
+              <MainImage>
+                <Image
+                  src={product?.image}
+                  alt={product?.image}
+                  width={350}
+                  preview={true}
+                />
+              </MainImage>
+            </ImageContainer>
 
-        <Col md={12} xs={24} style={{ padding: '1.5rem' }}>
-          <h1>{product?.title}</h1>
-          <h2>{product?.category}</h2>
-          <h4>{product?.description}</h4>
-          <Rate allowHalf defaultValue={product.rating?.rate} />
-          <h2>{`Price $ ${product?.price}`}</h2>
-        
-          <ButtonContainer>
-            <AddToCartBtn size='large' style={CartButton} onClick={() => {}}>
-              ADD TO CART
-            </AddToCartBtn>
-          </ButtonContainer>
-        </Col>
-      </ProductDetailContainer>
+            <Col md={12} xs={24} style={{ padding: '1.5rem' }}>
+              <h1>{product?.title}</h1>
+              <h2>{product?.category}</h2>
+              <h4>{product?.description}</h4>
+              <Rate allowHalf defaultValue={product.rating?.rate} />
+              <h2>{`Price $ ${product?.price}`}</h2>
 
+              <Quantity
+                product={product}
+                quantity={quantity}
+                increaseQty={increaseQty}
+                decreaseQty={decreaseQty}
+              />
+
+              <ButtonContainer>
+                <AddToCartBtn
+                  size='large'
+                  style={CartButton}
+                  onClick={() => {}}
+                >
+                  ADD TO CART
+                </AddToCartBtn>
+              </ButtonContainer>
+            </Col>
+          </ProductDetailContainer>
         </MainContent>
       </div>
       <Footer />
@@ -68,7 +107,6 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
-
 
 const ProductDetailContainer = styled.div`
   display: flex;
@@ -120,4 +158,3 @@ const CartButton = {
     width: '100%',
   },
 };
-
