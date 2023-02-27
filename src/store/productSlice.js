@@ -7,9 +7,10 @@ const productSlice = createSlice({
   initialState: {
     products: [],
     status: 'idle',
+    error: null,
     productById: [],
     productByIdStatus: 'idle',
-    error: null,
+    productByIdError: null,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -34,7 +35,7 @@ const productSlice = createSlice({
       })
       .addCase(fetchProductById.rejected, (state, action) => {
         state.productByIdStatus = 'failed';
-        state.error = action.error.message;
+        state.productByIdError = action.error.message;
       })
   },
 });

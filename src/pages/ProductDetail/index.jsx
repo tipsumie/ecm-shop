@@ -4,27 +4,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductById } from '../../store/productSlice';
 import { useParams } from 'react-router-dom';
 import { Row, Col, Image, Rate } from 'antd';
-
 import styled from 'styled-components';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products.productById);
+  const productByIdStatus = useSelector((state) => state.products.productByIdStatus);
+  const productByIdError = useSelector((state) => state.products.productByIdError);
 
 
   useEffect(() => {
     dispatch(fetchProductById(id));
-  }, [id],dispatch);
+  }, [id]);
 
 
-  // if (productByIdStatus === 'loading') {
-  //   return <Loading />;
-  // }
 
-  // if (productByIdStatus === 'failed') {
-  //   return <div>{error}</div>;
-  // }
+  if (productByIdStatus === 'loading') {
+    return <Loading />;
+  }
+
+  if (productByIdStatus === 'failed') {
+    return <div>{productByIdError}</div>;
+  }
 
   return (
     <div>
