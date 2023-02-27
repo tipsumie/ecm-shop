@@ -1,15 +1,15 @@
 import React from 'react';
 import {  Badge, Row, Col, Layout } from 'antd';
 import { ShopOutlined , ShoppingCartOutlined } from '@ant-design/icons';
-import { useNavigate, Link } from 'react-router-dom';
+import {  Link } from 'react-router-dom';
 
 const { Header } = Layout;
 
 const AppHeader = () => {
-  const navigate = useNavigate()
+ 
 
   return (
-    <Header style={{ lineHeight: '50px',  }}>
+    <Header style={{ lineHeight: '50px',marginTop:'20px'  }}>
       <Row justify='center'>
         <Col span={3} style={{display:'flex', justifyContent:'center'}} >
           <Link to='/'>
@@ -25,7 +25,7 @@ const AppHeader = () => {
           style={{display:'flex', justifyContent:'center'}}
         >
           <Link to='/cart'>
-            <Badge>
+            <Badge count={7}>
               <ShoppingCartOutlined
                 style={{ fontSize: 42, cursor: 'pointer' }}
               />

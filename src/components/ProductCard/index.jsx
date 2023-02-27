@@ -1,31 +1,62 @@
 import React from 'react';
 import { Card, Image, Row } from 'antd';
 import AddToCartBtn from '../AddToCartBtn';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const ProductCard = ({ product }) => {
   return (
-    <Card
-      title={product?.title}
+    <CardContainer
       key={product?.id}
       cover={
-        <Image
-          style={{
-            height: '110px',
-            objectFit: 'scale-down',
-            marginTop: '10px',
-          }}
-          src={product?.image}
-          preview={false}
-        />
+        <Link to={`/products/${product?.id}`}>
+          <ImageContainer>
+            <Image
+              style={{
+                height: '150px',
+                objectFit: 'scale-down',
+                marginTop: '15px',
+              }}
+              src={product?.image}
+              preview={false}
+            />
+          </ImageContainer>
+        </Link>
       }
       style={{ width: '100%' }}
     >
-      <Row justify={'space-between'}>
-        <h3>{`Price $ ${product?.price}`}</h3>
+      <Row>
+      <Link to={`/products/${product?.id}`}>
+        <ProductTitle>{product?.title}</ProductTitle>
+      </Link>
+      </Row>
+      <Row justify='space-between' >
+        <h4>{`Price $ ${product?.price}`}</h4>
         <AddToCartBtn />
       </Row>
-    </Card>
+    </CardContainer>
   );
 };
 
 export default ProductCard;
+
+const ProductTitle = styled.h2`
+  font-size: 14px;
+  text-align: center;
+  color: #000;
+  &:hover {
+    color: #0080FE;
+  }
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CardContainer = styled(Card)`
+  min-height:350px
+`;
+
+
