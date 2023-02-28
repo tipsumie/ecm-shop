@@ -24,7 +24,9 @@ const CartPopup = ({ children }) => {
               />
             </Col>
             <Col>
+            <TitleContainer>
               <TitleText>{item?.title}</TitleText>
+              </TitleContainer>
               <Row>
               <QuantityText>{`x ${item?.quantity}`}</QuantityText>
               <PriceText>{` $ ${item?.price}`}</PriceText>
@@ -51,7 +53,7 @@ const TitleText = styled.p`
   color: #000;
   font-weight: 200;
   margin-left: 1em;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 0cm;
 
   @media screen and (max-width: 768px) {
@@ -108,4 +110,11 @@ const Image = styled.img`
 
 const LineHr = styled.hr`
   border: 0.5px solid 	#E8E8E8;
+`;
+
+const TitleContainer = styled.div`
+ width: 350px;
+  overflow: hidden;
+ text-overflow: ellipsis;
+  white-space: nowrap; 
 `;
