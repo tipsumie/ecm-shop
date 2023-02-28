@@ -26,11 +26,11 @@ const AppHeader = () => {
           style={{display:'flex', justifyContent:'center'}}
         >
           <CartPopup>
-            <Badge count={7}>
+           
               <ShoppingCartOutlined
                 style={{ fontSize: 42, cursor: 'pointer' }}
               />
-            </Badge>
+
           </CartPopup>
         </Col>
       </Row>
