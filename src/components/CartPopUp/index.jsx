@@ -6,10 +6,13 @@ import { Scrollbars } from 'react-custom-scrollbars';
 
 const CartPopup = ({ children }) => {
   const cartItems = useSelector((state) => state.cart.carts);
-  const cartTotal = useSelector((state) => state.cart.total);
+
+  const cartTotalPrice = cartItems.reduce((total, item) => {
+    return total + item.quantity * item.price;
+  }, 0);
 
   const content = (
-     <Scrollbars autoHide style={{ height: 400, width:450 }}>
+     <Scrollbars autoHide style={{ height:300 ,maxHeight:400, width:450 }}>
       {cartItems.map((item) => (
         <div key={item?.id}>
           <Row >
@@ -31,7 +34,7 @@ const CartPopup = ({ children }) => {
           <LineHr />
         </div>
       ))}
-      <TotalText>{`Total : $ ${cartTotal?.totalPrice}`  }</TotalText>
+      <TotalText>{`Total : $ ${cartTotalPrice.toFixed(2)}`  }</TotalText>
       </Scrollbars>
   );
 

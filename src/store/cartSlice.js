@@ -13,7 +13,7 @@ const storeInLocalStorage = (data) => {
   localStorage.setItem('cart', JSON.stringify(data));
 };
 
-const initialState = { carts: fetchFromLocalStorage(), total: 0 };
+const initialState = { carts: fetchFromLocalStorage()};
 
 const cartSlice = createSlice({
   name: 'cart',
