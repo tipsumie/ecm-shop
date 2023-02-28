@@ -12,32 +12,28 @@ const CartPopup = ({ children }) => {
   }, 0);
 
   const content = (
-     <Scrollbars autoHide style={{ height:300 ,maxHeight:400, width:450 }}>
+    <Scrollbars autoHide style={CartScrollbars}>
       {cartItems.map((item) => (
         <div key={item?.id}>
-          <Row >
+          <Row>
             <Col>
-              <Image
-                src={item?.image}
-                alt={item?.image}
-
-              />
+              <Image src={item?.image} alt={item?.image} />
             </Col>
             <Col>
-            <TitleContainer>
-              <TitleText>{item?.title}</TitleText>
+              <TitleContainer>
+                <TitleText>{item?.title}</TitleText>
               </TitleContainer>
               <Row>
-              <QuantityText>{`x ${item?.quantity}`}</QuantityText>
-              <PriceText>{` $ ${item?.price}`}</PriceText>
+                <QuantityText>{`x ${item?.quantity}`}</QuantityText>
+                <PriceText>{` $ ${item?.price}`}</PriceText>
               </Row>
             </Col>
           </Row>
           <LineHr />
         </div>
       ))}
-      <TotalText>{`Total : $ ${cartTotalPrice.toFixed(2)}`  }</TotalText>
-      </Scrollbars>
+      <TotalText>{`Total : $ ${cartTotalPrice.toFixed(2)}`}</TotalText>
+    </Scrollbars>
   );
 
   return (
@@ -109,12 +105,19 @@ const Image = styled.img`
 `;
 
 const LineHr = styled.hr`
-  border: 0.5px solid 	#E8E8E8;
+  border: 0.5px solid #e8e8e8;
 `;
 
 const TitleContainer = styled.div`
- width: 350px;
+  width: 350px;
   overflow: hidden;
- text-overflow: ellipsis;
-  white-space: nowrap; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
+
+const CartScrollbars = {
+  height: "300px",
+  maxHeight: "400px",
+  width: "450px",
+}
+

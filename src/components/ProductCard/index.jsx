@@ -34,7 +34,7 @@ const ProductCard = ({ product }) => {
       }
       style={{ width: '100%' }}
     >
-      <Row>
+      <Row style={{ minHeight:'66px'}}>
       <Link to={`/products/${product?.id}`}>
         <ProductTitle>{product?.title}</ProductTitle>
       </Link>
@@ -51,7 +51,6 @@ export default ProductCard;
 
 const ProductTitle = styled.h2`
   font-size: 14px;
-  text-align: center;
   color: #000;
   &:hover {
     color: #0080FE;
