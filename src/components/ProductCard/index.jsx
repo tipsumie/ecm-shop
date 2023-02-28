@@ -34,7 +34,7 @@ const ProductCard = ({ product }) => {
       }
       style={{ width: '100%' }}
     >
-      <Row style={{ minHeight:'66px'}}>
+      <Row style={{minHeight:'89px'}}>
       <Link to={`/products/${product?.id}`}>
         <ProductTitle>{product?.title}</ProductTitle>
       </Link>
