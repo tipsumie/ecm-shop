@@ -8,8 +8,16 @@ const CartPopup = ({ children }) => {
   const cartItems = useSelector((state) => state.cart.carts);
 
   const cartTotalPrice = cartItems.reduce((total, item) => {
-    return total + item.quantity * item.price;
+    return total + item?.quantity * item.price;
   }, 0);
+
+  const sumProductQuantities = (cartItems) =>{
+    const allProductQuantities = cartItems.reduce((total, item) => {
+      return total + item?.quantity;
+    }, 0);
+
+  return allProductQuantities;
+  }
 
   const content = cartItems.length > 0 ? (
     <Scrollbars autoHide style={CartScrollbars}>
@@ -40,7 +48,7 @@ const CartPopup = ({ children }) => {
 
   return (
     <Popover content={content} title='Shopping Cart'>
-      <Badge count={cartItems?.length}>{children}</Badge>
+      <Badge count={sumProductQuantities(cartItems)}>{children}</Badge>
     </Popover>
   );
 };

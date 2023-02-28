@@ -50,6 +50,7 @@ const ProductDetail = () => {
   const addToCartHandler = (product, quantity) => {
     let totalPrice = quantity * product?.price;
     dispatch(addToCart({...product, quantity: quantity, totalPrice}))
+    alert(`${product?.title} has been added to your cart!`);
   }
 
 

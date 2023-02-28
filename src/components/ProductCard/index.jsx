@@ -12,6 +12,7 @@ const ProductCard = ({ product }) => {
   const addToCartHandler = (product ) => {
     let totalPrice =  product?.price;
     dispatch(addToCart({...product, quantity: 1, totalPrice}))
+    alert(`${product?.title} has been added to your cart!`);
   }
 
   return (
