@@ -11,7 +11,7 @@ const CartPopup = ({ children }) => {
     return total + item.quantity * item.price;
   }, 0);
 
-  const content = (
+  const content = cartItems.length > 0 ? (
     <Scrollbars autoHide style={CartScrollbars}>
       {cartItems.map((item) => (
         <div key={item?.id}>
@@ -34,6 +34,8 @@ const CartPopup = ({ children }) => {
       ))}
       <TotalText>{`Total : $ ${cartTotalPrice.toFixed(2)}`}</TotalText>
     </Scrollbars>
+  ) : (
+    <h4 style={{textAlign:'center'}}>No Product!</h4>
   );
 
   return (
