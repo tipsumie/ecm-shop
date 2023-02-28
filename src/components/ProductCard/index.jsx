@@ -3,8 +3,17 @@ import { Card, Image, Row } from 'antd';
 import AddToCartBtn from '../AddToCartBtn';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../store/cartSlice';
 
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+
+  const addToCartHandler = (product ) => {
+    let totalPrice =  product?.price;
+    dispatch(addToCart({...product, quantity: 1, totalPrice}))
+  }
+
   return (
     <CardContainer
       key={product?.id}
@@ -32,7 +41,7 @@ const ProductCard = ({ product }) => {
       </Row>
       <Row justify='space-between' >
         <h4>{`Price $ ${product?.price}`}</h4>
-        <AddToCartBtn />
+        <AddToCartBtn  onClick={() => {addToCartHandler(product)}} />
       </Row>
     </CardContainer>
   );
