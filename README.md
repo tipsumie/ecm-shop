@@ -7,6 +7,7 @@ This web application, which is written in JavaScript using the React library, ut
 First, run the development server:
 
 ```bash
+yarn install  //  To install all dependencies for a project.
 
 yarn dev
 
