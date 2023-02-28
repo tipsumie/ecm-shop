@@ -10,7 +10,7 @@ const AppHeader = () => {
  
 
   return (
-    <Header style={{ lineHeight: '50px',marginTop:'20px'  }}>
+    <Header style={{ lineHeight: '50px',marginTop:'20px',backgroundColor:"#FFF"  }}>
       <Row justify='center'>
         <Col span={3} style={{display:'flex', justifyContent:'center'}} >
           <Link to='/'>
