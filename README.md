@@ -42,3 +42,17 @@ VITE_BASE_URL = https://fakestoreapi.com/products
 ```
 
 Load environment variable from a .env file into process.env. to define them in a local file.
+
+### Deploy on Vercel
+
+Check out the ECM-Shop website hosted on Vercel at [ECM-Shop](https://ecm-shop.vercel.app/) 
+
+
+### Here’s how to clear the local storage in Google Chrome:
+
+1. Open the Google Chrome Console by pressing F12 key or right click to select "Inspect".
+2. Select “Application” in the console’s top menu.
+3. Select “Local Storage” in the console’s left menu.
+3. Right click your site(s) and click clear to delete the local storage.
+
+if you need to clear the cart item.
