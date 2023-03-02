@@ -4,7 +4,7 @@ This web application, which is written in JavaScript using the React library, ut
 
 ## Installing and Running the app
 
-First, run the development server:
+begin this command at project root directory
 
 ```bash
 yarn install  //  To install all dependencies for a project.
