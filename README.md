@@ -34,7 +34,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - A package that provides tools for managing client-side routing in React applications.
 
-#### Setting up environment variable
+#### Setting environment variable
 
 ```bash
 
