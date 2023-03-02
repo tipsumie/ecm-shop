@@ -2,7 +2,7 @@
 
 This web application, which is written in JavaScript using the React library, utilizes Vite as a modern build tool and development server, thus enhancing its overall performance and development experience.
 
-## Getting Started
+## Installing and Running the app
 
 First, run the development server:
 
